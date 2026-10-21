@@ -1,0 +1,14 @@
+[
+  { "id": 1, "message": "Hi, what time is my class tomorrow? I can't find it in the app.", "expected": "question" },
+  { "id": 2, "message": "I was charged twice this month. Please fix this ASAP.", "expected": "complaint" },
+  { "id": 3, "message": "I want to cancel my subscription, I don't have time anymore.", "expected": "cancellation" },
+  { "id": 4, "message": "Ciao! Posso spostare la lezione di giovedì a venerdì?", "expected": "question" },
+  { "id": 5, "message": "La profesora llegó 15 minutos tarde por tercera vez. No es serio.", "expected": "complaint" },
+  { "id": 6, "message": "Ich möchte mein Abo kündigen und das Geld für diesen Monat zurück.", "expected": "cancellation" },
+  { "id": 7, "message": "Thanks a lot, today's class was great!", "expected": "other" },
+  { "id": 8, "message": "The video kept freezing during the whole lesson, this is the second time.", "expected": "complaint" },
+  { "id": 9, "message": "This is terrible, the teacher never shows up. I'm done, cancel everything.", "expected": "cancellation" },
+  { "id": 10, "message": "¿Cuánto sale el plan intensivo de 3 meses?", "expected": "question" },
+  { "id": 11, "message": "Can I pause my plan for August while I'm on holiday?", "expected": "cancellation" },
+  { "id": 12, "message": "Buy cheap followers now!!! click here", "expected": "other" }
+]

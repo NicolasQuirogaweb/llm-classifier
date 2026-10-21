@@ -1,0 +1,22 @@
+{
+  "name": "llm-classifier",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Classifies student messages with an LLM API (Gemini or Claude) using structured JSON output, plus an eval set.",
+  "scripts": {
+    "classify": "tsx src/cli.ts",
+    "eval": "tsx src/eval.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.137.0",
+    "@google/genai": "^2.30.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

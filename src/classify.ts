@@ -74,6 +74,12 @@ async function classifyWithGemini(message: string): Promise<ClassifyResult> {
     input: message,
     generation_config: { thinking_level: "low" }, // simple task: little reasoning needed
     response_format: { type: "text", mime_type: "application/json", schema: JSON_SCHEMA },
+  }, {
+    // No silent SDK retries: they hide the real error (429, 500...) behind our timeout
+    // and each retry spends free-tier quota.
+    maxRetries: 0,
+    // Abort the HTTP request itself on timeout; otherwise it stays open and the process never exits.
+    timeout: TIMEOUT_MS,
   });
 
   if (!interaction.output_text) throw new Error("Gemini returned no text.");
@@ -121,7 +127,8 @@ async function classifyWithClaude(message: string): Promise<ClassifyResult> {
 }
 
 // If the API takes too long (for example, silent retries after hitting a quota), fail with a clear error.
-const TIMEOUT_MS = 60_000;
+// Override with LLM_TIMEOUT_MS to check whether a slow case answers eventually.
+const TIMEOUT_MS = Number(process.env.LLM_TIMEOUT_MS) || 60_000;
 
 export async function classifyMessage(message: string): Promise<ClassifyResult> {
   const call = PROVIDER === "claude" ? classifyWithClaude(message) : classifyWithGemini(message);
